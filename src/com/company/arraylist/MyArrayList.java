@@ -2,6 +2,7 @@ package com.company.arraylist;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.NoSuchElementException;
 
 public class MyArrayList<T> {
     private Object[] array;
@@ -41,7 +42,8 @@ public class MyArrayList<T> {
         array = newArray;
     }
 
-    public void addAll(Collection<T> collection){
+    public void addAll(Collection<T> collection)
+    {
         addAll((T[]) collection.toArray());
     }
 
@@ -77,6 +79,11 @@ public class MyArrayList<T> {
         }
     }
 
+    public void remove(int index){
+        if(index > array.length - 1) throw new IllegalArgumentException();
+        remove((T) array[index]);
+    }
+
     public boolean contains(T element){
         boolean contains = false;
         for (Object o : array) {
@@ -94,6 +101,21 @@ public class MyArrayList<T> {
 
     public int size(){
         return array.length;
+    }
+
+    public void clear(){
+        array = new Object[]{};
+    }
+
+    public Object[] toArray(){
+        Object[] resultArray = new Object[array.length];
+        System.arraycopy(array, 0, resultArray, 0, array.length);
+        return resultArray;
+    }
+
+    public Object getFirst(){
+        if(array.length < 1) throw new NoSuchElementException();
+        return array[1];
     }
 
     @Override

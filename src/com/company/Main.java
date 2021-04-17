@@ -41,5 +41,7 @@ public class Main {
         System.out.println(myArrayList);
         myArrayList.remove("Hi!");
         System.out.println(myArrayList);
+        myArrayList.remove(2);
+        System.out.println(myArrayList);
     }
 }
