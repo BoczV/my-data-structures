@@ -30,6 +30,21 @@ public class MyArrayList<T> {
         array = newArray;
     }
 
+    public void addAll(T[] arrayToBeAdded){
+        int defaultArrayLength = array.length;
+        int arrayToBeAddedLength = arrayToBeAdded.length;
+        Object[] newArray = new Object[defaultArrayLength + arrayToBeAddedLength];
+        System.arraycopy(array, 0, newArray, 0, defaultArrayLength);
+        for(int i = 0; i < arrayToBeAddedLength; i++){
+            newArray[defaultArrayLength + i] = arrayToBeAdded[i];
+        }
+        array = newArray;
+    }
+
+    public void addAll(Collection<T> collection){
+        addAll((T[]) collection.toArray());
+    }
+
     public void insert(int index, T newElement){
         if(index > array.length) throw new IllegalArgumentException();
         Object[] newArray = new Object[array.length + 1];
@@ -47,13 +62,15 @@ public class MyArrayList<T> {
 
     public void remove(T removeElement){
         if(contains(removeElement)){
+            boolean removed = false;
             Object[] newArray = new Object[array.length - 1];
             int innerIndex = 0;
             for(int i = 0; i < array.length; i++){
-                if(array[i] != removeElement){
-                    newArray[i - innerIndex] = array[i];
-                } else {
+                if(array[i] == removeElement && !removed){
                     innerIndex++;
+                    removed = true;
+                } else {
+                    newArray[i - innerIndex] = array[i];
                 }
             }
             array = newArray;
@@ -69,6 +86,10 @@ public class MyArrayList<T> {
             }
         }
         return contains;
+    }
+
+    public boolean isEmpty(){
+        return array.length == 0;
     }
 
     public int size(){
