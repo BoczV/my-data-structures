@@ -43,5 +43,7 @@ public class Main {
         System.out.println(myArrayList);
         myArrayList.remove(2);
         System.out.println(myArrayList);
+        System.out.println(myArrayList.get(3));
+        System.out.println(myArrayList.getFirst());
     }
 }
