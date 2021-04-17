@@ -36,5 +36,6 @@ public class Main {
         myArrayList.remove("Hi!");
         System.out.println(myArrayList);
         System.out.println(myArrayList.contains("Hi!"));
+        // Check SSH stuff
     }
 }
