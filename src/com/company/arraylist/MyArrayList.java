@@ -17,7 +17,6 @@ public class MyArrayList<T> {
     }
 
     public MyArrayList(int sizeOfCollection){
-        if(sizeOfCollection < 0) throw new IllegalArgumentException();
         array = new Object[sizeOfCollection];
     }
 
@@ -49,7 +48,7 @@ public class MyArrayList<T> {
     }
 
     public void insert(int index, T newElement){
-        if(index > array.length || 0 > index) throw new IllegalArgumentException();
+        if(index > array.length) throw new IllegalArgumentException();
         Object[] newArray = new Object[array.length + 1];
         int innerIndex = 0;
         for(int i = 0; i < newArray.length; i++){
@@ -81,7 +80,7 @@ public class MyArrayList<T> {
     }
 
     public void remove(int index){
-        if(index > array.length - 1 || 0 > index) throw new IllegalArgumentException();
+        if(index > array.length - 1) throw new IllegalArgumentException();
         remove((T) array[index]);
     }
 
@@ -116,12 +115,7 @@ public class MyArrayList<T> {
 
     public Object getFirst(){
         if(array.length < 1) throw new NoSuchElementException();
-        return array[0];
-    }
-
-    public Object get(int index){
-        if(array.length - 1 < index || 0 > index) throw new IllegalArgumentException();
-        return array[index];
+        return array[1];
     }
 
     @Override

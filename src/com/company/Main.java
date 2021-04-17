@@ -30,16 +30,18 @@ public class Main {
         myArrayList.add("to");
         myArrayList.add("see");
         myArrayList.add("you");
+        System.out.println(myArrayList);
         myArrayList.addAll(new String[]{"Bye", "Bye", "Life"});
+        System.out.println(myArrayList);
         List<String> al = new ArrayList<>();
         al.add("Hi!");
         al.add("nice");
         al.add("to");
         myArrayList.addAll(al);
+        System.out.println(myArrayList);
         myArrayList.remove("Hi!");
+        System.out.println(myArrayList);
         myArrayList.remove(2);
         System.out.println(myArrayList);
-        System.out.println(myArrayList.getFirst());
-        System.out.println(myArrayList.get(5));
     }
 }
