@@ -1,7 +1,6 @@
 package com.company;
 
 
-import com.company.linkedlist.MyLinkedList;
 
 public class Main {
 
