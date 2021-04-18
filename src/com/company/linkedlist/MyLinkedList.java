@@ -1,10 +1,12 @@
 package com.company.linkedlist;
 
 
-import java.util.List;
+import com.company.interfaces.MyList;
+
+import java.util.Collection;
 import java.util.NoSuchElementException;
 
-public class MyLinkedList<T> {
+public class MyLinkedList<T> implements MyList<T> {
     private Node<T> head;
 
     private static class Node<T> {
@@ -28,13 +30,14 @@ public class MyLinkedList<T> {
         }
     }
 
-    public void addAll(List<T> list){
+    public void addAll(Collection<T> list){
+        Object[] newElements = list.toArray();
         boolean headIsnull = head == null;
-        head = headIsnull? new Node<>(list.get(0)): head;
+        head = headIsnull? new Node<>((T)newElements[0]): head;
         Node<T> actualNode = head;
         while (actualNode.neighbor != null) actualNode = actualNode.neighbor;
         for (int i = headIsnull? 1:0; i < list.size(); i++) {
-            Node<T> newNode = new Node<>(list.get(i));
+            Node<T> newNode = new Node<>((T)newElements[i]);
             actualNode.neighbor = newNode;
             actualNode = newNode;
         }
@@ -107,7 +110,6 @@ public class MyLinkedList<T> {
         }
         return result;
     }
-
 
 
     public Object get(int index){
