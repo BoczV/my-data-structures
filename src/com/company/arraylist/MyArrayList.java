@@ -1,10 +1,12 @@
 package com.company.arraylist;
 
+import com.company.interfaces.MyList;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.NoSuchElementException;
 
-public class MyArrayList<T> {
+public class MyArrayList<T> implements MyList<T> {
     private Object[] array;
 
     public MyArrayList(T[] array) {
@@ -63,13 +65,15 @@ public class MyArrayList<T> {
         array = newArray;
     }
 
-    public void remove(T removeElement){
+    public Object remove(T removeElement){
+        Object result = null;
         if(contains(removeElement)){
             boolean removed = false;
             Object[] newArray = new Object[array.length - 1];
             int innerIndex = 0;
             for(int i = 0; i < array.length; i++){
                 if(array[i] == removeElement && !removed){
+                    result = array[i];
                     innerIndex++;
                     removed = true;
                 } else {
@@ -78,11 +82,12 @@ public class MyArrayList<T> {
             }
             array = newArray;
         }
+        return result;
     }
 
-    public void remove(int index){
+    public Object remove(int index){
         if(index > array.length - 1 || index < 0) throw new IllegalArgumentException();
-        remove((T) array[index]);
+        return remove((T) array[index]);
     }
 
     public boolean contains(T element){
