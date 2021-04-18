@@ -52,7 +52,7 @@ public class MyLinkedList<T> {
         }
     }
 
-    public T remove(T value){
+    public Object remove(T value){
         T result;
         if(head == null) return null;
         else {
@@ -80,7 +80,7 @@ public class MyLinkedList<T> {
         return result;
     }
 
-    public T remove(int index){
+    public Object remove(int index){
         T result = null;
         if(head == null) return null;
         else {
@@ -110,7 +110,7 @@ public class MyLinkedList<T> {
 
 
 
-    public T get(int index){
+    public Object get(int index){
 
       T result;
       int counter = 0;
@@ -172,7 +172,7 @@ public class MyLinkedList<T> {
         }
     }
 
-    public T getFirst(){
+    public Object getFirst(){
         if(head == null) throw new NoSuchElementException();
         return head.value;
     }

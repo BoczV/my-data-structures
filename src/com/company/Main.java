@@ -24,26 +24,13 @@ public class Main {
         System.out.println(myLinkedList);
         myLinkedList.sort();
         System.out.println(myLinkedList);*/
-        MyArrayList<String> myArrayList = new MyArrayList<>();
-        myArrayList.add("Hi!");
-        myArrayList.add("Nice");
-        myArrayList.add("to");
-        myArrayList.add("see");
-        myArrayList.add("you");
+        MyArrayList<Integer> myArrayList = new MyArrayList<>();
+        myArrayList.add(3);
+        myArrayList.add(2);
+        myArrayList.add(1);
+        myArrayList.add(5);
+        myArrayList.add(4);
+        myArrayList.sort();
         System.out.println(myArrayList);
-        myArrayList.addAll(new String[]{"Bye", "Bye", "Life"});
-        System.out.println(myArrayList);
-        List<String> al = new ArrayList<>();
-        al.add("Hi!");
-        al.add("nice");
-        al.add("to");
-        myArrayList.addAll(al);
-        System.out.println(myArrayList);
-        myArrayList.remove("Hi!");
-        System.out.println(myArrayList);
-        myArrayList.remove(2);
-        System.out.println(myArrayList);
-        System.out.println(myArrayList.get(3));
-        System.out.println(myArrayList.getFirst());
     }
 }

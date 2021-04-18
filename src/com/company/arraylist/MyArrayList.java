@@ -124,6 +124,18 @@ public class MyArrayList<T> {
         return array[index];
     }
 
+    public void sort(){
+        for(int i = 0; i < array.length; i++){
+            for(int j = 0; j < array.length - 1; j++){
+                if((int) array[i] < (int) array[j]){
+                    Object helperElement = array[i];
+                    array[i] = array[j];
+                    array[j] = helperElement;
+                }
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return Arrays.toString(array);
