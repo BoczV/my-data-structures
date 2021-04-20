@@ -1,6 +1,7 @@
 package com.company.linkedlist;
 
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
@@ -31,8 +32,8 @@ class MyLinkedListTest {
         myIntegerLinkedList.add(5);
         myIntegerLinkedList.add(1);
         myStringLinkedList.add("Alma");
-        Assertions.assertEquals(2, myIntegerLinkedList.size());
-        Assertions.assertEquals(1, myStringLinkedList.size());
+        Assertions.assertEquals("[5, 1]", myIntegerLinkedList.toString());
+        Assertions.assertEquals("[Alma]", myStringLinkedList.toString());
     }
 
     @org.junit.jupiter.api.Test
@@ -93,29 +94,65 @@ class MyLinkedListTest {
 
     @org.junit.jupiter.api.Test
     void insert() {
+        myIntegerLinkedList.addAll(intArray);
+        myStringLinkedList.addAll(stringArray);
+        myIntegerLinkedList.insert(2, 1);
+        myStringLinkedList.insert(1, "Plume");
+        Assertions.assertEquals("[3, 1, 1, 8, 2]", myIntegerLinkedList.toString());
+        Assertions.assertEquals("[Pear, Plume, Cherry]", myStringLinkedList.toString());
     }
 
     @org.junit.jupiter.api.Test
     void getFirst() {
+        myIntegerLinkedList.addAll(intList);
+        myStringLinkedList.addAll(stringList);
+        myIntegerLinkedList.addAll(intArray);
+        myStringLinkedList.addAll(stringArray);
+        Assertions.assertEquals("Peach", myStringLinkedList.getFirst());
+        Assertions.assertEquals(45, myIntegerLinkedList.getFirst());
     }
 
     @org.junit.jupiter.api.Test
     void size() {
+        myIntegerLinkedList.add(5);
+        myIntegerLinkedList.add(1);
+        myStringLinkedList.add("Alma");
+        Assertions.assertEquals(2, myIntegerLinkedList.size());
+        Assertions.assertEquals(1, myStringLinkedList.size());
     }
 
     @org.junit.jupiter.api.Test
     void clear() {
+        myIntegerLinkedList.add(5);
+        myIntegerLinkedList.add(1);
+        myStringLinkedList.add("Alma");
+        myIntegerLinkedList.clear();
+        myStringLinkedList.clear();
+        Assertions.assertEquals("[]", myStringLinkedList.toString());
+        Assertions.assertEquals("[]", myIntegerLinkedList.toString());
     }
 
     @org.junit.jupiter.api.Test
     void toArray() {
+        myIntegerLinkedList.add(5);
+        myIntegerLinkedList.add(1);
+        myStringLinkedList.add("Alma");
+        Assertions.assertArrayEquals(new Integer[]{5, 1}, myIntegerLinkedList.toArray());
+        Assertions.assertArrayEquals(new String[]{"Alma"}, myStringLinkedList.toArray());
     }
 
     @org.junit.jupiter.api.Test
     void isEmpty() {
+        myStringLinkedList.add("Alma");
+        Assertions.assertFalse(myStringLinkedList.isEmpty());
+        Assertions.assertTrue(myIntegerLinkedList.isEmpty());
     }
 
     @org.junit.jupiter.api.Test
     void sort() {
+        myIntegerLinkedList.addAll(intList);
+        myIntegerLinkedList.addAll(intArray);
+        myIntegerLinkedList.sort();
+        Assertions.assertEquals("[1, 2, 3, 8, 45, 61]", myIntegerLinkedList.toString());
     }
 }
