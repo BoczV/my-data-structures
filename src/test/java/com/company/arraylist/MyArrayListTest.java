@@ -47,6 +47,10 @@ class MyArrayListTest {
 
     @Test
     void addAllCollectionElement() {
+        myIntegerArrayList.addAll(intList);
+        myStringArrayList.addAll(stringList);
+        Assertions.assertEquals("[45, 61]", myIntegerArrayList.toString());
+        Assertions.assertEquals("[Peach, Banana]", myStringArrayList.toString());
     }
 
     @Test
