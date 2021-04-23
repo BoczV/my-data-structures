@@ -38,11 +38,15 @@ class MyArrayListTest {
     }
 
     @Test
-    void addAll() {
+    void addAllArrayElement() {
+        myIntegerArrayList.addAll(intArray);
+        myStringArrayList.addAll(stringArray);
+        Assertions.assertEquals("[3, 1, 8, 2]", myIntegerArrayList.toString());
+        Assertions.assertEquals("[Pear, Cherry]", myStringArrayList.toString());
     }
 
     @Test
-    void testAddAll() {
+    void addAllCollectionElement() {
     }
 
     @Test
@@ -50,11 +54,11 @@ class MyArrayListTest {
     }
 
     @Test
-    void remove() {
+    void removeById() {
     }
 
     @Test
-    void testRemove() {
+    void removeByElement() {
     }
 
     @Test
