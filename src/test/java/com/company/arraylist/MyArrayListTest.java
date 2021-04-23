@@ -65,6 +65,12 @@ class MyArrayListTest {
 
     @Test
     void removeById() {
+        myIntegerArrayList.addAll(intList);
+        myStringArrayList.addAll(stringList);
+        myIntegerArrayList.remove(0);
+        myStringArrayList.remove(1);
+        Assertions.assertEquals("[61]", myIntegerArrayList.toString());
+        Assertions.assertEquals("[Peach]", myStringArrayList.toString());
     }
 
     @Test
