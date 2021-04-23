@@ -141,6 +141,12 @@ class MyArrayListTest {
 
     @Test
     void get() {
+        myIntegerArrayList.addAll(intArray);
+        myStringArrayList.addAll(stringArray);
+        myIntegerArrayList.addAll(intList);
+        myStringArrayList.addAll(stringList);
+        Assertions.assertEquals(45, myIntegerArrayList.get(4));
+        Assertions.assertEquals("Peach", myStringArrayList.get(2));
     }
 
     @Test
