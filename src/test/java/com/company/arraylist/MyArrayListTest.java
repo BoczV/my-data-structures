@@ -111,6 +111,13 @@ class MyArrayListTest {
 
     @Test
     void clear() {
+        myIntegerArrayList.add(5);
+        myIntegerArrayList.add(1);
+        myStringArrayList.add("Alma");
+        myIntegerArrayList.clear();
+        myStringArrayList.clear();
+        Assertions.assertEquals("[]", myStringArrayList.toString());
+        Assertions.assertEquals("[]", myIntegerArrayList.toString());
     }
 
     @Test
