@@ -151,5 +151,9 @@ class MyArrayListTest {
 
     @Test
     void sort() {
+        myIntegerArrayList.addAll(intList);
+        myIntegerArrayList.addAll(intArray);
+        myIntegerArrayList.sort();
+        Assertions.assertEquals("[1, 2, 3, 8, 45, 61]", myIntegerArrayList.toString());
     }
 }
