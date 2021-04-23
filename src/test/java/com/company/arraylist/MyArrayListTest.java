@@ -55,6 +55,12 @@ class MyArrayListTest {
 
     @Test
     void insert() {
+        myIntegerArrayList.addAll(intArray);
+        myStringArrayList.addAll(stringArray);
+        myIntegerArrayList.insert(2, 1);
+        myStringArrayList.insert(1, "Plume");
+        Assertions.assertEquals("[3, 1, 1, 8, 2]", myIntegerArrayList.toString());
+        Assertions.assertEquals("[Pear, Plume, Cherry]", myStringArrayList.toString());
     }
 
     @Test
