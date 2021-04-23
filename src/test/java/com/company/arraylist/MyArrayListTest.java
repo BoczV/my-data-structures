@@ -102,6 +102,11 @@ class MyArrayListTest {
 
     @Test
     void size() {
+        myIntegerArrayList.add(5);
+        myIntegerArrayList.add(1);
+        myStringArrayList.add("Alma");
+        Assertions.assertEquals(2, myIntegerArrayList.size());
+        Assertions.assertEquals(1, myStringArrayList.size());
     }
 
     @Test
