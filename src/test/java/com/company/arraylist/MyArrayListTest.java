@@ -95,6 +95,9 @@ class MyArrayListTest {
 
     @Test
     void isEmpty() {
+        myStringArrayList.add("Alma");
+        Assertions.assertFalse(myStringArrayList.isEmpty());
+        Assertions.assertTrue(myIntegerArrayList.isEmpty());
     }
 
     @Test
