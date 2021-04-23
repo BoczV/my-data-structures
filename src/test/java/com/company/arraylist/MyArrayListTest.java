@@ -122,6 +122,11 @@ class MyArrayListTest {
 
     @Test
     void toArray() {
+        myIntegerArrayList.add(5);
+        myIntegerArrayList.add(1);
+        myStringArrayList.add("Alma");
+        Assertions.assertArrayEquals(new Integer[]{5, 1}, myIntegerArrayList.toArray());
+        Assertions.assertArrayEquals(new String[]{"Alma"}, myStringArrayList.toArray());
     }
 
     @Test
