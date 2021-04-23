@@ -85,6 +85,12 @@ class MyArrayListTest {
 
     @Test
     void contains() {
+        myIntegerArrayList.addAll(intArray);
+        myStringArrayList.addAll(stringArray);
+        myIntegerArrayList.addAll(intList);
+        myStringArrayList.addAll(stringList);
+        Assertions.assertFalse(myIntegerArrayList.contains(44));
+        Assertions.assertTrue(myStringArrayList.contains("Cherry"));
     }
 
     @Test
