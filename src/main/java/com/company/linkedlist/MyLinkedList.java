@@ -215,25 +215,7 @@ public class MyLinkedList<T> implements MyList<T> {
     }
 
     public void sort(){
-        Node<T> actualNode = head;
-        Node<T> previousNode = null;
-        while(actualNode != null) {
-            Node<T> secondActualNode = actualNode;
-            while (secondActualNode != null) {
-                Node<T> neighborNode = secondActualNode.neighbor;
-                    if(neighborNode != null  && (int) secondActualNode.value > (int) neighborNode.value) {
-                        Node<T> helperNode = new Node<>(secondActualNode.value);
-                        helperNode.neighbor = neighborNode.neighbor;
-                        neighborNode.neighbor = helperNode;
-                        if(previousNode == null) head = neighborNode;
-                        else previousNode.neighbor = neighborNode;
-                    }
-                    previousNode = secondActualNode;
-                    secondActualNode = secondActualNode.neighbor;
-            }
-            previousNode = actualNode;
-            actualNode = actualNode.neighbor;
-        }
+
     }
 
 
