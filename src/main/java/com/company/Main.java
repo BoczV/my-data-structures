@@ -11,15 +11,14 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
-        myLinkedList.add(45);
-        myLinkedList.add(2);
-        myLinkedList.add(1);
-        myLinkedList.add(3);
-        myLinkedList.add(61);
-        myLinkedList.add(8);
-        myLinkedList.sort();
-        System.out.println(myLinkedList);
-
+        MyLinkedList<Integer> myIntegerLinkedList = new MyLinkedList<>();
+        myIntegerLinkedList.add(45);
+        myIntegerLinkedList.add(61);
+        myIntegerLinkedList.add(3);
+        myIntegerLinkedList.add(1);
+        myIntegerLinkedList.add(8);
+        myIntegerLinkedList.add(2);
+        myIntegerLinkedList.sort();
+        System.out.println(myIntegerLinkedList);
     }
 }
