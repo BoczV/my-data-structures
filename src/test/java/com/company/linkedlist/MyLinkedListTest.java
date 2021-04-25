@@ -151,8 +151,9 @@ class MyLinkedListTest {
     @org.junit.jupiter.api.Test
     void sort() {
         myIntegerLinkedList.addAll(intList);
+        myIntegerLinkedList.add(7);
         myIntegerLinkedList.addAll(intArray);
         myIntegerLinkedList.sort();
-        Assertions.assertEquals("[1, 2, 3, 8, 45, 61]", myIntegerLinkedList.toString());
+        Assertions.assertEquals("[1, 2, 3, 7, 8, 45, 61]", myIntegerLinkedList.toString());
     }
 }
