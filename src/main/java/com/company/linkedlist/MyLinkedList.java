@@ -7,51 +7,51 @@ import java.util.Collection;
 import java.util.NoSuchElementException;
 
 public class MyLinkedList<T> implements MyList<T> {
-    private Node<T> head;
+    private MyNode<T> head;
 
-    private static class Node<T> {
+    private static class MyNode<T> {
 
         private T value;
-        private Node<T> neighbor;
+        private MyNode<T> neighbor;
 
-        private Node(T value) {
+        private MyNode(T value) {
             this.value = value;
         }
 
     }
 
     public void add(T value){
-        Node<T> newNode = new Node<>(value);
-        if(head == null) head = newNode;
+        MyNode<T> newMyNode = new MyNode<>(value);
+        if(head == null) head = newMyNode;
         else {
-            Node<T> actualNode = head;
-            while (actualNode.neighbor != null) actualNode = actualNode.neighbor;
-            actualNode.neighbor = newNode;
+            MyNode<T> actualMyNode = head;
+            while (actualMyNode.neighbor != null) actualMyNode = actualMyNode.neighbor;
+            actualMyNode.neighbor = newMyNode;
         }
     }
 
     public void addAll(Collection<T> list){
         Object[] newElements = list.toArray();
         boolean headIsnull = head == null;
-        head = headIsnull? new Node<>((T)newElements[0]): head;
-        Node<T> actualNode = head;
-        while (actualNode.neighbor != null) actualNode = actualNode.neighbor;
+        head = headIsnull? new MyNode<>((T) newElements[0]) : head;
+        MyNode<T> actualMyNode = head;
+        while (actualMyNode.neighbor != null) actualMyNode = actualMyNode.neighbor;
         for (int i = headIsnull? 1:0; i < list.size(); i++) {
-            Node<T> newNode = new Node<>((T)newElements[i]);
-            actualNode.neighbor = newNode;
-            actualNode = newNode;
+            MyNode<T> newMyNode = new MyNode<>((T) newElements[i]);
+            actualMyNode.neighbor = newMyNode;
+            actualMyNode = newMyNode;
         }
     }
 
     public void addAll(T[] array){
         boolean headIsnull = head == null;
-        head = headIsnull? new Node<>(array[0]): head;
-        Node<T> actualNode = head;
-        while (actualNode.neighbor != null) actualNode = actualNode.neighbor;
+        head = headIsnull? new MyNode<>(array[0]) : head;
+        MyNode<T> actualMyNode = head;
+        while (actualMyNode.neighbor != null) actualMyNode = actualMyNode.neighbor;
         for (int i = headIsnull? 1:0; i < array.length; i++) {
-            Node<T> newNode = new Node<>(array[i]);
-            actualNode.neighbor = newNode;
-            actualNode = newNode;
+            MyNode<T> newMyNode = new MyNode<>(array[i]);
+            actualMyNode.neighbor = newMyNode;
+            actualMyNode = newMyNode;
         }
     }
 
@@ -59,22 +59,22 @@ public class MyLinkedList<T> implements MyList<T> {
         T result;
         if(head == null) return null;
         else {
-            Node<T> actualNode = head;
-            Node<T> previousNode;
-            Node<T> nextNode = actualNode.neighbor;
-            if(value.getClass().equals(String.class)) result = actualNode.value.equals(value)? actualNode.value: null;
-            else result = actualNode.value == value? actualNode.value: null;
+            MyNode<T> actualMyNode = head;
+            MyNode<T> previousMyNode;
+            MyNode<T> nextMyNode = actualMyNode.neighbor;
+            if(value.getClass().equals(String.class)) result = actualMyNode.value.equals(value)? actualMyNode.value: null;
+            else result = actualMyNode.value == value? actualMyNode.value: null;
             if(result != null) {
-                head = nextNode;
+                head = nextMyNode;
             } else {
-                while (actualNode.neighbor != null){
-                    previousNode = actualNode;
-                    actualNode = actualNode.neighbor;
-                    nextNode = actualNode.neighbor;
-                    if(value.getClass().equals(String.class)) result = actualNode.value.equals(value)? actualNode.value: null;
-                    else result = actualNode.value == value? actualNode.value: null;
+                while (actualMyNode.neighbor != null){
+                    previousMyNode = actualMyNode;
+                    actualMyNode = actualMyNode.neighbor;
+                    nextMyNode = actualMyNode.neighbor;
+                    if(value.getClass().equals(String.class)) result = actualMyNode.value.equals(value)? actualMyNode.value: null;
+                    else result = actualMyNode.value == value? actualMyNode.value: null;
                     if(result != null){
-                        previousNode.neighbor = nextNode;
+                        previousMyNode.neighbor = nextMyNode;
                         break;
                     }
                 }
@@ -88,21 +88,21 @@ public class MyLinkedList<T> implements MyList<T> {
         if(head == null) return null;
         else {
             int counter = 0;
-            Node<T> actualNode = head;
-            Node<T> previousNode;
-            Node<T> nextNode = actualNode.neighbor;
+            MyNode<T> actualMyNode = head;
+            MyNode<T> previousMyNode;
+            MyNode<T> nextMyNode = actualMyNode.neighbor;
             if(counter == index) {
                 result = head.value;
-                head = nextNode;
+                head = nextMyNode;
             } else {
-                while (actualNode.neighbor != null){
+                while (actualMyNode.neighbor != null){
                     counter++;
-                    previousNode = actualNode;
-                    actualNode = actualNode.neighbor;
-                    nextNode = actualNode.neighbor;
-                    result = counter == index? actualNode.value: null;
+                    previousMyNode = actualMyNode;
+                    actualMyNode = actualMyNode.neighbor;
+                    nextMyNode = actualMyNode.neighbor;
+                    result = counter == index? actualMyNode.value: null;
                     if(result != null){
-                        previousNode.neighbor = nextNode;
+                        previousMyNode.neighbor = nextMyNode;
                         break;
                     }
                 }
@@ -116,13 +116,13 @@ public class MyLinkedList<T> implements MyList<T> {
 
       T result;
       int counter = 0;
-      Node<T> actualNode = head;
-      result = counter == index? actualNode.value: null;
+      MyNode<T> actualMyNode = head;
+      result = counter == index? actualMyNode.value: null;
       if(result == null){
-          while (actualNode.neighbor != null){
+          while (actualMyNode.neighbor != null){
               counter++;
-              actualNode = actualNode.neighbor;
-              result = counter == index? actualNode.value: null;
+              actualMyNode = actualMyNode.neighbor;
+              result = counter == index? actualMyNode.value: null;
               if(result != null) break;
           }
           if(counter < index){
@@ -134,11 +134,11 @@ public class MyLinkedList<T> implements MyList<T> {
 
     public boolean contains(T value){
         boolean result;
-        Node<T> actualNode = head;
-        result = actualNode.value == value;
-        while (actualNode.neighbor != null){
-            actualNode = actualNode.neighbor;
-            result = actualNode.value == value;
+        MyNode<T> actualMyNode = head;
+        result = actualMyNode.value == value;
+        while (actualMyNode.neighbor != null){
+            actualMyNode = actualMyNode.neighbor;
+            result = actualMyNode.value == value;
             if(result) break;
         }
         return result;
@@ -147,27 +147,27 @@ public class MyLinkedList<T> implements MyList<T> {
     public void insert(int index, T value){
         boolean change = false;
         int counter = 0;
-        Node<T> newNode = new Node<>(value);
-        Node<T> previousNode;
+        MyNode<T> newMyNode = new MyNode<>(value);
+        MyNode<T> previousMyNode;
         if(counter == index){
-            previousNode = head;
-            newNode.neighbor = previousNode;
-            head = newNode;
+            previousMyNode = head;
+            newMyNode.neighbor = previousMyNode;
+            head = newMyNode;
         } else {
-            Node<T> actualNode = head;
-            while (actualNode.neighbor != null){
-                previousNode = actualNode;
-                actualNode = actualNode.neighbor;
+            MyNode<T> actualMyNode = head;
+            while (actualMyNode.neighbor != null){
+                previousMyNode = actualMyNode;
+                actualMyNode = actualMyNode.neighbor;
                 counter++;
                 if(counter == index){
-                    previousNode.neighbor = newNode;
-                    newNode.neighbor = actualNode;
+                    previousMyNode.neighbor = newMyNode;
+                    newMyNode.neighbor = actualMyNode;
                     change = true;
                     break;
                 }
             }
             if(++counter == index && !change){
-                actualNode.neighbor = newNode;
+                actualMyNode.neighbor = newMyNode;
                 change = true;
             }
             if(!change) throw new IndexOutOfBoundsException();
@@ -182,11 +182,11 @@ public class MyLinkedList<T> implements MyList<T> {
     public int size(){
         int counter = 0;
         if(head != null) {
-            Node<T> actualNode = head;
+            MyNode<T> actualMyNode = head;
             counter++;
-            while (actualNode.neighbor != null) {
+            while (actualMyNode.neighbor != null) {
                 counter++;
-                actualNode = actualNode.neighbor;
+                actualMyNode = actualMyNode.neighbor;
             }
         }
         return counter;
@@ -200,10 +200,10 @@ public class MyLinkedList<T> implements MyList<T> {
         Object[] array = new Object[size()];
         if(head != null) {
             int counter = 0;
-            Node<T> actualNode = head;
-            while (actualNode != null) {
-                array[counter] = actualNode.value;
-                actualNode = actualNode.neighbor;
+            MyNode<T> actualMyNode = head;
+            while (actualMyNode != null) {
+                array[counter] = actualMyNode.value;
+                actualMyNode = actualMyNode.neighbor;
                 counter++;
             }
         }
@@ -218,15 +218,15 @@ public class MyLinkedList<T> implements MyList<T> {
         int size = this.size();
         if (size > 1) {
             for (int i = 0; i < size; i++) {
-                Node<T> currentNode = head;
-                Node<T> next = head.neighbor;
+                MyNode<T> currentMyNode = head;
+                MyNode<T> next = head.neighbor;
                 for (int j = 0; j < size - 1 - i; j++) {
-                    if ((int)currentNode.value > (int)next.value) {
-                        T temp = currentNode.value;
-                        currentNode.value = next.value;
+                    if ((int) currentMyNode.value > (int)next.value) {
+                        T temp = currentMyNode.value;
+                        currentMyNode.value = next.value;
                         next.value = temp;
                     }
-                    currentNode = next;
+                    currentMyNode = next;
                     next = next.neighbor;
                 }
             }
@@ -241,12 +241,12 @@ public class MyLinkedList<T> implements MyList<T> {
             result = new StringBuilder("[]");
         } else {
             result.append("[");
-            Node<T> actualNode = head;
-            result.append(actualNode.value).append(", ");
+            MyNode<T> actualMyNode = head;
+            result.append(actualMyNode.value).append(", ");
 
-            while (actualNode.neighbor != null){
-                actualNode = actualNode.neighbor;
-                result.append(actualNode.value).append(", ");
+            while (actualMyNode.neighbor != null){
+                actualMyNode = actualMyNode.neighbor;
+                result.append(actualMyNode.value).append(", ");
             }
 
             result = new StringBuilder(result.substring(0, result.length() - 2));
