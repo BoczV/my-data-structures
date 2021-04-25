@@ -11,7 +11,7 @@ public class MyLinkedList<T> implements MyList<T> {
 
     private static class Node<T> {
 
-        private final T value;
+        private T value;
         private Node<T> neighbor;
 
         private Node(T value) {
@@ -215,7 +215,22 @@ public class MyLinkedList<T> implements MyList<T> {
     }
 
     public void sort(){
-
+        int size = this.size();
+        if (size > 1) {
+            for (int i = 0; i < size; i++) {
+                Node<T> currentNode = head;
+                Node<T> next = head.neighbor;
+                for (int j = 0; j < size - 1 - i; j++) {
+                    if ((int)currentNode.value > (int)next.value) {
+                        T temp = currentNode.value;
+                        currentNode.value = next.value;
+                        next.value = temp;
+                    }
+                    currentNode = next;
+                    next = next.neighbor;
+                }
+            }
+        }
     }
 
 
